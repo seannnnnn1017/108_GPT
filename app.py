@@ -11,4 +11,7 @@ def hello():
     data="hello data" #Create a variable 
     return render_template('hello.php', data=data) #pass the variable to websit
 #start websit server
-your_application.run()
+
+
+if __name__=="__main__":
+    your_application.run()
