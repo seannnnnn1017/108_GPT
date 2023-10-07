@@ -6,5 +6,8 @@ your_application = Flask(__name__, template_folder='templates') # buliding appli
 def index():
     return render_template("home.html")
 
+@your_application.route('/hello')
+def hello():
+    return render_template('hello.php')
 #start websit server
 your_application.run()
