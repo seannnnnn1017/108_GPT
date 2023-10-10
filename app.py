@@ -4,7 +4,7 @@ app = Flask(__name__, template_folder='templates',static_folder='static') # buli
 # building website home
 @app.route('/') #This function is used to respond to website connections.
 def index():
-    return render_template("home.html")
+    return render_template("index.html")
 
 @app.route('/hello') #other websit loaction
 def hello():
