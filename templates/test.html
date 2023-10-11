@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
+    <link rel="stylesheet" href="static\style.css">
+    <link rel="stylesheet" href="static\test.css">
+
+</head>
+<body>
+  <!-- HTML -->
+
+
+<!-- 頁籤按鈕 -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-code-alt'></i>
+            <div class="logo-name"><span>108</span>GPT</div>
+        </a>
+        <span id="tab-1">主頁</span>
+        <span id="tab-2">行事曆​</span>
+        <span id="tab-3">詢問我們​</span>
+        <span id="tab-4">個人列表</span>
+        <span id="tab-5">設定</span>
+        <div id="tab">
+            <ul class="side-menu">
+                <li class="active"><a href="tab-1"><i class='bx bxs-dashboard'></i>首頁</a></li>
+                <li><a href="tab-2"><i class='bx bx-analyse'></i>行事曆​</a></li>
+                <li><a href="tab-3"><i class='bx bx-message-square-dots'></i>詢問我們​</a></li>
+                <li><a href="tab-4"><i class='bx bx-group'></i>個人列表</a></li>
+                <li><a href="tab-5"><i class='bx bx-cog'></i>設定</a></li>
+            </ul>
+        </div>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+<!-- Main Content -->
+<div class="content">
+    <!-- Navbar -->
+    <nav>
+        <i class='bx bx-menu'></i>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="theme-toggle" hidden>
+        <label for="theme-toggle" class="theme-toggle"></label>
+        <a href="#" class="notif">
+            <i class='bx bx-bell'></i>
+            <span class="count">12</span>
+        </a>
+        <a href="#" class="profile">
+            <img src="static\profile-1.jpg">
+        </a>
+    </nav>
+
+    <!-- End of Navbar -->
+
+    <main>
+        <!-- 頁籤的內容區塊 -->
+    <div id="tab">
+        <div class="tab-content-1">
+            <p>主頁面顯示的內容</p>
+        </div>
+        <div class="tab-content-2">
+        <p>頁面1顯示的內容</p>
+        </div>
+        <div class="tab-content-3">
+        <p>頁面2顯示的內容</p>
+        </div>
+        <div class="tab-content-4">
+        <p>頁面3顯示的內容</p>
+        </div>
+    </div>
+    </main>
+
+</div>
+
+<script src="static\index.js"></script>
+</body>
+</html>
