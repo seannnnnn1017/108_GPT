@@ -42,8 +42,10 @@ span ~ #tab > div:first-of-type,
 #tab-5:target ~ #tab > div.tab-content-5 {
     visibility: visible;
     height: 200px;
-
+    background-color: brown;
 }
+    
+
 
 span {
     display: none;

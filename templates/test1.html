@@ -3,44 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Example</title>
+    <style>
+        .tab-content {
+            display: none;
+        }
 
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Document</title>
-    <link rel="stylesheet" href="static\style.css">
-    <link rel="stylesheet" href="static\test.css">
-
+        .active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
- <!-- HTML -->
-
-<span id="tab-1">主頁</span>
-<span id="tab-2">頁面1</span>
-<span id="tab-3">頁面2</span>
-<span id="tab-4">頁面3</span>
-
-<!-- 頁籤按鈕 -->
-<div id="tab">
     <ul>
-        <li><a href="#tab-1">主頁</a></li>
-        <li><a href="#tab-2">頁面1</a></li>
-        <li><a href="#tab-3">頁面2</a></li>
-        <li><a href="#tab-4">頁面3</a></li>
+        <li><a href="#" id="tab1">Tab 1</a></li>
+        <li><a href="#" id="tab2">Tab 2</a></li>
+        <li><a href="#" id="tab3">Tab 3</a></li>
     </ul>
 
-    <!-- 頁籤的內容區塊 -->
-    <div class="tab-content-1">
-        <p>主頁面顯示的內容</p>
+    <main>
+    <div class="tab-content" id="content1">
+        <h2>Tab 1 Content</h2>
+        <p>This is the content of Tab 1.</p>
     </div>
-    <div class="tab-content-2">
-      <p>頁面1顯示的內容</p>
-    </div>
-    <div class="tab-content-3">
-      <p>頁面2顯示的內容</p>
-    </div>
-    <div class="tab-content-4">
-      <p>頁面3顯示的內容</p>
-    </div>
-</div>
 
+    <div class="tab-content" id="content2">
+        <h2>Tab 2 Content</h2>
+        <p>This is the content of Tab 2.</p>
+    </div>
+
+    <div class="tab-content" id="content3">
+        <h2>Tab 3 Content</h2>
+        <p>This is the content of Tab 3.</p>
+    </div>
+    </main>
+
+    <script>
+        // JavaScript code
+        const tabs = document.querySelectorAll('a');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = e.target.id;
+                tabContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                document.getElementById('content' + tabId.slice(-1)).style.display = 'block';
+            });
+        });
+    </script>
 </body>
 </html>
