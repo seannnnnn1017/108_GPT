@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Document</title>
     <link rel="stylesheet" href="static\style.css">
-    <title>Responsive Dashboard Design #2 | AsmrProg</title>
+
+
 </head>
-
 <body>
+  <!-- HTML -->
 
 
+<!-- 頁籤按鈕 -->
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#" class="logo">
-            <i class='bx bx-code-alt'></i>
-            <div class="logo-name"><span>108</span>GPT</div>
+        <a href="#" class="logo" id="tab1">
+            <i class='bx bx-code-alt' id="tab1"></i>
+            <div class="logo-name" id="tab1"><span id="tab1">108</span>GPT</div>
         </a>
+
         <ul class="side-menu">
-            <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>首頁</a></li>
-            <li><a href="#"><i class='bx bx-analyse'></i>行事曆​</a></li>
-            <li><a href="#"><i class='bx bx-message-square-dots'></i>詢問我們​</a></li>
-            <li><a href="#"><i class='bx bx-group'></i>個人列表</a></li>
-            <li><a href="#"><i class='bx bx-cog'></i>設定</a></li>
+            <li class="active"><a  id="tab1"><i class='bx bxs-dashboard' id="tab1"></i>首頁</a></li>
+            <li><a  id="tab2"><i class='bx bx-analyse' id="tab2"></i>行事曆​</a></li>
+            <li><a  id="tab3"><i class='bx bx-message-square-dots' id="tab3"></i>詢問我們​</a></li>
+            <li><a  id="tab4"><i class='bx bx-group' id="tab4"></i>個人列表</a></li>
+            <li><a  id="tab5"><i class='bx bx-cog' id="tab5"></i>設定</a></li>
         </ul>
+ 
+
+
         <ul class="side-menu">
             <li>
                 <a href="#" class="logout">
@@ -34,67 +41,89 @@
             </li>
         </ul>
     </div>
-    <!-- End of Sidebar -->
 
-    <!-- Main Content -->
-    <div class="content">
-        <!-- Navbar -->
-        <nav>
-            <i class='bx bx-menu'></i>
-            <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
-                </div>
-            </form>
-            <input type="checkbox" id="theme-toggle" hidden>
-            <label for="theme-toggle" class="theme-toggle"></label>
-            <a href="#" class="notif">
-                <i class='bx bx-bell'></i>
-                <span class="count">12</span>
-            </a>
-            <a href="#" class="profile">
-                <img src="static\profile-1.jpg">
-            </a>
-        </nav>
+<!-- Main Content -->
+<div class="content">
+    <!-- Navbar -->
+    <nav>
+        <i class='bx bx-menu'></i>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="theme-toggle" hidden>
+        <label for="theme-toggle" class="theme-toggle"></label>
+        <a href="#" class="notif">
+            <i class='bx bx-bell'></i>
+            <span class="count">12</span>
+        </a>
+        <a href="#" class="profile">
+            <img src="static\profile-1.jpg">
+        </a>
+    </nav>
 
-        <!-- End of Navbar -->
+    <!-- End of Navbar -->
 
-        <main>
+    <main>
+
+        <div class="tab-content" id="content1">
             <!-- Insights -->
             <ul class="insights">
                 <li>
+                <a href="https://chat.openai.com/c/6a9bf47e-bdbb-48fd-9107-c1ad7fb46fc2"style="
+                display: flex;
+                align-items: center;
+                cursor: pointer;">
                     <i class='bx bx-show-alt'></i>
-                    <span class="info">
-                        <h3>
-                            學系資訊​
-                        </h3>
-                        <p>Information​</p>
-                    </span>
+                
+                <span class="info" style="padding: 24px;">
+                    <h3>
+                        學系資訊​
+                    </h3>
+                    <p>Information​</p>
+                </span></a>
                 </li>
-                <li><i class='bx bx-calendar-check'></i>
-                    <span class="info">
+
+                <li>
+                    <a href="https://chat.openai.com/c/6a9bf47e-bdbb-48fd-9107-c1ad7fb46fc2"style="
+                display: flex;
+                align-items: center;
+                cursor: pointer;">
+                    <i class='bx bx-calendar-check'></i>
+                    <span class="info"  style="padding: 24px;">
                         <h3>
                             行事曆​
                         </h3>
                         <p>calendar</p>
-                    </span>
+                    </span></a>
                 </li>
-                <li><i class='bx bxs-file'></i>
-                    <span class="info">
+                <li>
+                    <a href="https://chat.openai.com/c/6a9bf47e-bdbb-48fd-9107-c1ad7fb46fc2"style="
+                display: flex;
+                align-items: center;
+                cursor: pointer;">
+                    <i class='bx bxs-file'></i>
+                    <span class="info" style="padding: 24px;">
                         <h3>
                             歷程檔案
                         </h3>
                         <p>History file</p>
-                    </span>
+                    </span></a>
                 </li>
-                <li><i class='bx bx-dollar-circle'></i>
-                    <span class="info">
+                <li>
+                    <a href="https://chat.openai.com/c/6a9bf47e-bdbb-48fd-9107-c1ad7fb46fc2"style="
+                display: flex;
+                align-items: center;
+                cursor: pointer;">
+                    <i class='bx bx-dollar-circle'></i>
+                    <span class="info" style="padding: 24px;">
                         <h3>
                             更多活動​
                         </h3>
                         <p>More activities​</p>
-                    </span>
+                    </span></a>
                 </li>
             </ul>
             <div class="header">
@@ -110,7 +139,7 @@
                 </div>
             </div>
 
-            
+
             <!-- End of Insights -->
 
             <div class="bottom-data">
@@ -194,12 +223,57 @@
                 <!-- End of Reminders-->
 
             </div>
+        </div>
+    
+        <div class="tab-content" id="content2" style="display: none;">
+            <div class="header">
+                <div class="left">
+                    <h1>行事曆</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Analytics
+                            </a></li>
+                        /
+                        <li><a href="#" class="active">other</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tab-content" id="content3" style="display: none;">
+            <h2>Tab 3 Content</h2>
+            <p>This is the content of Tab 3.</p>
+        </div>
 
-        </main>
+        <div class="tab-content" id="content4" style="display: none;">
+            <h2>Tab 4 Content</h2>
+            <p>This is the content of Tab 4.</p>
+        </div>
 
-    </div>
+        <div class="tab-content" id="content5" style="display: none;">
+            <h2>Tab 5 Content</h2>
+            <p>This is the content of Tab 5.</p>
+        </div>
+    </main>
 
-    <script src="static\index.js"></script>
+</div>
+
+<script>
+    // JavaScript code
+    const tabs = document.querySelectorAll('a');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+    
+            const tabId = e.target.id;
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            document.getElementById('content' + tabId.slice(-1)).style.display = 'block';
+        });
+    });
+</script>
+<script src="static\index.js"></script>
 </body>
-
 </html>
