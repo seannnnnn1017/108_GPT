@@ -47,9 +47,9 @@ def file_get():
 def test():
     return render_template('test.html')
 
-@app.route("/test1")
-def test1():
-    return render_template('test1.html')
+@app.route("/activity")
+def activity():
+    return render_template('activity.html')
 
 
 if __name__=="__main__":
