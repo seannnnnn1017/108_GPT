@@ -65,6 +65,10 @@ def test():
 def activity():
     return render_template('activity.html',theme=theme)
 
+@app.route("/personal_information")
+def personal_information():
+    return render_template('personal_information.html',theme=theme)
+
 
 if __name__=="__main__":
     app.run()
