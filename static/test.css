@@ -76,6 +76,12 @@ border-radius: 50%; /* 圆形边框 */
     color: var(--dark);
 }
 
+
+.peson_info_p{
+    font-weight: 600;
+    margin: 25px;
+    color: var(--dark);
+}
 hr {
     color: var(--dark);
 }
