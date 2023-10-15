@@ -35,6 +35,23 @@ window.addEventListener('resize', () => {
     }
 });
 
+
+
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("change", function() {
+// ?取复?框的?前??（?中或未?中）
+const theme = themeToggle.checked ? "dark" : "light";
+
+fetch('/update_theme', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ theme: theme }),
+});
+});
+
 const toggler = document.getElementById('theme-toggle');
 
 toggler.addEventListener('change', function () {
@@ -44,3 +61,21 @@ toggler.addEventListener('change', function () {
         document.body.classList.remove('dark');
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const themeParagraph = document.getElementById("theme_set1");
+    if (themeParagraph) {
+      const themeValue = themeParagraph.textContent;
+      if (themeValue==='dark') {
+        document.body.classList.add('dark');
+        const themeToggle = document.getElementById("theme-toggle");
+
+        const currentChecked = themeToggle.checked;
+
+        themeToggle.checked = !currentChecked;
+
+    } else {
+        document.body.classList.remove('dark');
+    }
+    }
+  });
