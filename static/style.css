@@ -625,3 +625,23 @@ body{
 ol, ul {
      padding-left: 0rem; 
 }
+
+
+.btn-primary{
+    color: var(--light);
+  }
+.text-muted{
+    color: var(--dark) !important; 
+  }
+
+.card.mb-4 {
+    background-color: var(--light);
+    border: 0;
+    box-shadow: none;
+}
+
+.form-control {
+    color: var(--dark);
+    background-color: var(--grey);
+    border: none;
+}
