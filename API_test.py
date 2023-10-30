@@ -1,7 +1,7 @@
 import openai
 from dotenv import dotenv_values
 
-config=dotenv_values('.env')
+config = dotenv_values(r'C:/Users/fishd/Desktop/Github/ChatGPT_API/.env')
 openai.api_key =config['api_key']
 
 res=openai.Completion.create(
