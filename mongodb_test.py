@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, url_for, redirect
 
 #pip install Flask pymongo
 from pymongo import MongoClient
-
+from sha512 import sha512
 app = Flask(__name__)
 #When you instantiate the MongoClient(), you pass it the host of your MongoDB server, 
 #which is localhost in our case, and the port, which is 27017 here.
@@ -34,12 +34,19 @@ def index():
         for i in all_account:
             if i['username'] ==username:
                 find=True
+                break
         if find:
             print('this account is exist')
+            print(i['password'])
+            print(sha512(password))
+            if sha512(password) == i['password']:
+                print('login')
+            else:
+                print('password error')
             
         else:
             print('No find this account or error.')
-        return redirect(url_for('getting'))
+
 
     all_todos = todos.find()
     return render_template('demoLogin.html', todos=all_todos)
