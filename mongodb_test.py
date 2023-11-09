@@ -1,11 +1,14 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect,session
 #the request object to access data the user will submit
 #the url_for() function to generate URLs
 #the redirect() function to redirect the user back to the index page after adding a todo.
 
+import os
 #pip install Flask pymongo
 from pymongo import MongoClient
 from sha512 import sha512
+
+from datetime import timedelta
 app = Flask(__name__)
 #When you instantiate the MongoClient(), you pass it the host of your MongoDB server, 
 #which is localhost in our case, and the port, which is 27017 here.
@@ -19,6 +22,9 @@ todos = db.todos
 demo_db=client.demo
 account=demo_db.account
 
+
+app.config['SECRET_KEY'] = os.urandom(24)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=31)
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
@@ -41,6 +47,8 @@ def index():
             print(sha512(password))
             if sha512(password) == i['password']:
                 print('login')
+                session['username']=username
+                return redirect(url_for('test_session'))
             else:
                 print('password error')
             
@@ -48,8 +56,8 @@ def index():
             print('No find this account or error.')
 
 
-    all_todos = todos.find()
-    return render_template('demoLogin.html', todos=all_todos)
+    name=session.get('username')
+    return render_template('demoLogin.html', name=name)
 
 @app.route("/get", methods=('GET', 'POST'))
 def getting():
@@ -64,6 +72,24 @@ def getting():
     
     return render_template('databaseGet.html', todos=all_todos)
 
+#Demo session
+@app.route('/session', methods=["GET", "POST"])
+def test_session():
+    
 
+
+    #getting session
+    name=session.get('username')
+    
+    #delete session
+    #session['username']=False
+    return render_template('demoLoginOut.html', name=name)
+
+#background process happening without any refreshing
+@app.route('/logout')
+def logout():
+    session['username']=None
+    print ("Logout")
+    return render_template('demoLogin.html', name=name)
 if __name__=="__main__":
     app.run()

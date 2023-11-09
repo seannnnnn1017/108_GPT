@@ -36,8 +36,8 @@ def test_data(): #http://127.0.0.1:5000/data_get?a=111&b=23
 def file_get():
     #read file
     data=[]
-    title="jalkdfjla;dsdf"
-    with open("C:/Users/fishd/Desktop/Github/108_GPT/data/demo_data.txt") as fin:
+    title=False
+    with open("data\demo_data.txt") as fin:
         for line in fin:
             line=line[:-1]
             times,number=line.split("	")

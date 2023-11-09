@@ -1,0 +1,22 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/logout',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+
+<h1>Hello {{name}}</h1>
+<div class='container'>
+    <h3>good by</h3>
+        <form>
+            <a href=# id=test><button class='btn btn-default'>Logout</button></a>
+        </form>
+
+</div>
