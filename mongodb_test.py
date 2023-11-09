@@ -89,6 +89,7 @@ def test_session():
 @app.route('/logout')
 def logout():
     session['username']=None
+    name=session.get('username')
     print ("Logout")
     return render_template('demoLogin.html', name=name)
 if __name__=="__main__":
