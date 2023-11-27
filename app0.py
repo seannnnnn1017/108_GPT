@@ -16,6 +16,11 @@ from pip._vendor import cachecontrol
 import google.auth.transport.requests
 import pathlib
 
+#openai
+import openai
+from dotenv import dotenv_values
+import time
+
 app = Flask(__name__)
 client = MongoClient('mongodb+srv://op23756778:Sean23756778@cluster0.xqmycmu.mongodb.net/')
 
@@ -29,7 +34,7 @@ client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
-    redirect_uri="https://one08-gpt-demo.onrender.com/callback"
+    redirect_uri="http://127.0.0.1:5000/callback"
 )
 
 def login_is_required(function):
@@ -55,8 +60,16 @@ reset_ask.create_index("expireAt", expireAfterSeconds=0)
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
+
+#session defind
+
 @app.route('/', methods=('GET', 'POST'))
 def index():
+    session["google_id"] =None
+    session["email"] = None
+    session["username"] = None
+    session["picture"] = None
+    session['fist_login']=False
     if session.get('username'):
         return redirect(url_for('main'))
     all_account=account.find()
@@ -115,20 +128,72 @@ def callback():
         )
 
         session["google_id"] = id_info.get("sub")
+        session["email"] = id_info.get("email")
         session["username"] = id_info.get("name")
-        return redirect("/main")
+        session["picture"] = id_info.get("picture")
+
+        all_account=account.find()
+        find=False
+        for i in all_account:
+            if i['email'] ==session.get('email'):
+                find=True
+                session["username"]=i['username']
+                break
+        if find:
+            return redirect("/main")
+        else:
+            print('not sign up')
+            session['fist_login']=True
+            return redirect(url_for('Fist_google_login'))
     except Exception as e:
         # Log the exception and handle it appropriately
         print(f"Exception in callback: {e}")
         return f"Exception in callback: {e}"
+    
+@app.route('/Fist_google_login', methods=('GET', 'POST'))
+def Fist_google_login():
+    if session.get('fist_login'):
+        if request.method=='POST':
+            username = request.form['username']
+            password = request.form['password']
+            email = session["email"]
+            repeat_password=request.form['repeat-password']
 
+            if repeat_password!=password:
+                return render_template('Member_login_system/FistGoogleLogin.html',state='repeat password error',email=session["email"])
+            if len(password) <8:
+                return render_template('Member_login_system/FistGoogleLogin.html',state='password need to have 8 or more characters',email=session["email"])
+            all_account=account.find()
+            for i in all_account:
+                if i['email'] ==email:
+                    return render_template('Member_login_system/FistGoogleLogin.html',state='the email exist',email=session["email"])
+            check_number=username+sha512(email)[:10]+sha512(password)[:10]
+            check.insert_one({'email': email,
+                              'username': username,
+                                'password': sha512(password),
+                                'check number':check_number,
+                                'expireAt': datetime.utcnow() + timedelta(days=1)})
+            query = {"check number": check_number}
+            accounts=check.find(query)
+            for i in accounts:
+                print(i['email'])
+            del i["_id"]
+            del i["expireAt"]
+            account.insert_one(i)
+            query = {'email': i['email']}
+            check.delete_many(query)
+            session['fist_login']=False
+            return redirect(url_for('main'))
+        return render_template('Member_login_system/demoFistGoogleLogin.html',email=session["email"])
+    else:
+        return redirect(url_for('index'))
+#壞掉中
 @app.route('/update_theme', methods=['POST'])
 def update_theme():
     global theme
     data = request.get_json()
     theme = data.get('theme')
     print(theme)
-
 
 @app.route('/main', methods=('GET', 'POST'))
 def main():
@@ -137,7 +202,7 @@ def main():
     else:
         print('not login')
         return redirect(url_for('index'))
-    return render_template('Member_login_system/demoMain.html', name=session.get('username'))
+    return render_template('Member_login_system/demoMain.html', name=session.get('username'),picture=session["picture"])
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -232,25 +297,26 @@ def reset_password():
         return render_template('Member_login_system/demoResetPasswordAfter.html',email=email)
     return render_template('Member_login_system/demoResetPassword.html',email=email)
 
-
-
-
-
 @app.route('/logout', methods=('GET', 'POST'))
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
+
 @app.route('/assist', methods=('GET', 'POST'))
 def assist():
+    layer_list=[]
     if request.method=='POST':
-        layer1_value = request.form.get('Layer 1')
-        layer2_value = request.form.get('Layer 2')
-        print(layer1_value,layer2_value)
+        for i in range(1,11):
+            layer_value=request.form.get(f'Layer {i}')
+            layer_list.append(layer_value)
+            print(layer_list)
+        result_data=generate_text(layer_list,department="人工智慧系",support="多元表現綜整心得")
+        return render_template('Assist_writing.html',result_data=result_data)
     return  render_template('Assist_writing.html')
+ 
 
-
-
+ 
 def send_verify_email(to_email, check_number):
     # Set up email credentials
     email_address = 'op23756778@gmail.com'
@@ -316,5 +382,47 @@ def send_reset_email(to_email, check_number):
         print(f"Error: {e}")
     finally:
         server.quit()
+
+def generate_text(ans_list,department="人工智慧系",support="多元表現綜整心得"):
+    with open("C:/Users/user/Desktop/108_GPT-Demo/多元表現綜整心得.txt", "r", encoding = "utf-8") as file:
+        AI_quesntions = [line.strip() for line in file.readlines()]
+        file.close()
+        
+    config = dotenv_values("C:/Users/user/Desktop/env.txt")
+    openai.api_key = config["API_KEY"]
+
+    messages = [{"role": "system", "content": "zh-Tw 你要幫準備申請大學的高中生撰寫學習歷程 字數大約1000字"}]
+
+    for i in range(len(AI_quesntions)):
+        ans=''
+        for item in ans_list:
+            ans = item #iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+        if ans:
+            messages.append({"role": "assistant", "content": AI_quesntions[i]},)
+            messages.append({"role": "user", "content": ans})
+        elif ans == "0":
+            return None
+
+    narration = f'''
+        目標學系: {department}
+        =====================================
+        根據以上問答及提供的學系，幫我完成{support}
+    '''
+    messages.append({"role": "user", "content": narration})
+
+
+    print("===========================================================================================")
+    start_time = time.time()
+    response = openai.ChatCompletion.create(
+        model = "gpt-4-1106-preview",
+        messages = messages,
+        max_tokens = 1000,
+    )
+    end_time = time.time() 
+    print(f"程式執行時間: {end_time - start_time} 秒")
+    
+    return response['choices'][0]['message']['content']
+
+
 if __name__=="__main__":
     app.run(debug=True)

@@ -23,6 +23,33 @@ function updatePageNumber() {
     document.getElementById('pageNumber').innerText = currentPage;
 }
 
+// 設定 label 的初始值
+var labelElement = document.getElementById('question');
+var question_list = ['請說明你執行過的自主學習計畫。', '請說明你高中社團經驗。', '請描述你的高中幹部經驗。', '請說明你有甚麼服務學習經驗。', '請說明你曾經參加過的競賽。', '有甚麼非修課紀錄之成果作品呢?', '描述你在高中期間考取的檢定證照。', '有甚麼其他特殊優良表現嗎?', '上述問答哪一個活動令你收穫最大。', '請用一句話說明你高中參與這些學習歷程對你帶來的收穫與成長。'];
+var question_number = 1; // Start from 0 to display the first question
+labelElement.textContent = question_list[question_number];
+const total_question = 10;
+
+function prevquestion() {
+    if (question_number > 0) {
+        question_number--;
+        question_show(question_list, question_number);
+    }
+}
+
+function nextquestion() {
+    if (question_number < total_question - 1) {
+        question_number++;
+        question_show(question_list, question_number);
+    }
+}
+
+function question_show(dataList, index) {
+    var labelElement = document.getElementById('question');
+    labelElement.innerText = dataList[index];
+}
+
+question_show(question_list, question_number);
 
 // script.js
 
@@ -50,6 +77,7 @@ function copyInputContent() {
         alert('Input is empty or not found.');
     }
 }
+
 
 let currentLayer = 1;
     
@@ -81,23 +109,11 @@ let currentLayer = 1;
 function prev_Layer_page(){
     prevLayer();
     prevPage();
-    readAndProcessFile();
+    prevquestion();
 }
 
 function next_Layer_page(){
     nextLayer();
     nextPage();
-    readAndProcessFile();
+    nextquestion();
 }
-
-const filePath = "C:/Users/user/Desktop/108_GPT-Demo/多元表現綜整心得.txt";
-
-readAndProcessFile(filePath, (err, AI_questions) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
-
-    // Now AI_questions contains an array of lines from the file
-    console.log(AI_questions);
-});
