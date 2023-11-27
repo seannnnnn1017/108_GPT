@@ -1,17 +1,15 @@
-from pymongo import MongoClient
+from flask import Flask, render_template, request, jsonify
+app = Flask(__name__, template_folder='templates',static_folder='static') # buliding application item
+theme='light'
+# building website home
+@app.route('/',methods=['GET']) #This function is used to respond to website connections.
+def index():
+    check_number=request.args.get("check_number")
+    if request.method=='GET':
+        print(check_number)
+    return render_template("test.html",theme=theme)
 
-client = MongoClient('localhost', 27017)
 
-db = client.test 
 
-test=db.test
-a=test.find()
-
-    
-test.insert_one({'_id': '123123123','username' : 'Sean'})
-
-for i in a:
-
-    print(i['_id'])
-
-    
+if __name__=="__main__":
+    app.run()

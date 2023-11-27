@@ -40,7 +40,7 @@ window.addEventListener('resize', () => {
 const themeToggle = document.getElementById("theme-toggle");
 
 themeToggle.addEventListener("change", function() {
-// ?取复?框的?前??（?中或未?中）
+
 const theme = themeToggle.checked ? "dark" : "light";
 
 fetch('/update_theme', {

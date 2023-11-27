@@ -1,4 +1,8 @@
-line-bot-sdk
-flask
+Flask
 openai
 gunicorn
+pymongo
+google-auth-oauthlib
+google-auth
+google-auth-httplib2
+python-dotenv

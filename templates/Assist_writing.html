@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assist writing</title>
+    <script src="static/assist_writing.js" defer></script>
+
+</head>
+
+<body>
+    <p>
+        <navbar>
+            <a href="#">首頁</a>
+            <a href="#">我的檔案</a>
+            <a href="#">我的追蹤</a>
+        </navbar>
+    </p>
+    <b><label for="Target Department">目標學系:</label></b>
+    <select id="Target Department" name="Target Department">
+        <option value="volvo">1</option>
+        <option value="saab">2</option>
+        <option value="mercedes">3</option>
+        <option value="audi">4</option>
+    </select>
+
+
+    <b><label for="Auxiliary projects">輔助項目:</label></b>
+    <select id="Auxiliary projects" name="Auxiliary projects">
+        <option value="volvo">1</option>
+        <option value="saab">2</option>
+        <option value="mercedes">3</option>
+        <option value="audi">4</option>
+    </select>
+
+    <hr>
+
+    <b>
+        <h2>題目敘述</h2>
+    </b>
+    <b><label for="Auxiliary projects"></label></b>
+    <br>
+    <p><button onclick="alert('Button clicked!')">生成</button></p>
+
+    <p><button onclick="alert('Button clicked!')">重新生成</button></p>
+    <b>
+        <hr>
+    </b>
+    <b>
+        <h2>回答內容</h2>
+    </b>
+
+    <!-- 10個圖層，每個圖層包含一個輸入框 -->
+    <form action='/assist' method="post">
+        <div id="layer1">
+            <input type="text" name="Layer 1">
+        </div>
+        <div id="layer2">
+            <input type="text" name="Layer 2">
+        </div>
+        <div id="layer3">
+            <input type="text" name="Layer 3">
+        </div>
+        <div id="layer4">
+            <input type="text" name="Layer 4">
+        </div>
+        <div id="layer5">
+            <input type="text" name="Layer 5">
+        </div>
+        <div id="layer6">
+            <input type="text" name="Layer 6">
+        </div>
+        <div id="layer7">
+            <input type="text" name="Layer 7">
+        </div>
+        <div id="layer8">
+            <input type="text" name="Layer 8">
+        </div>
+        <div id="layer9">
+            <input type="text" name="Layer 9">
+        </div>
+        <div id="layer10">
+            <input type="text" name="Layer 10">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <br>
+    <p>
+        <button onclick="prev_Layer_page()" id='prev_layer_page'>前一頁</button>
+        <label id="pageNumber">1</label>
+        <label id="totalpage">/10</label>
+        <button onclick="next_Layer_page()" id='next_layer_page'>下一頁</button>
+    </p>
+    <p>
+        
+        <input type="text" id="inputToCopy" value="{{ result_data }}">
+        <button onclick="copyInputContent()"><b>copy</b></button>
+    </p>
+
+
+</body>
+
+</html>

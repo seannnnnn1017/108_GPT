@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskApp</title>
+
+</head>
+<body>
+    <h1>Demo Sign up</h1>
+    <hr>
+    <div class="content">
+    <form method="post">
+        <p>
+            <b><label for="content">username</label></b>
+        </p>
+        <p>
+            <input type="text" name="username"
+                placeholder="username" required></input>
+        </p>
+
+        <p>
+            <b><label for="content">email</label></b>
+        </p>
+        <p>
+            <input type="email" name="email"
+                placeholder="email" required></input>
+        </p>
+
+        <p>
+            <b><label for="content">password</label></b>
+        </p>
+        <p>
+            <input type="password" name="password"
+                placeholder="password" required></input>
+        </p>
+        <p style="color: gray;">password need to have 8 or more characters</p>
+        <p>
+            <b><label for="content">repeat password</label></b>
+        </p>
+        <p>
+            <input type="password" name="repeat-password"
+                placeholder="password" required></input>
+        </p>
+
+        
+        <button type="submit">Sign up</button>
+        <p style="color: red;">{{state}}</p>
+        <p style="color: green;">{{success}}</p>
+    </form>
+    <hr>
+    <form action="./">
+        <button type="submit">Login in</button>
+     </form>
+    </div>
+</body>
+</html>

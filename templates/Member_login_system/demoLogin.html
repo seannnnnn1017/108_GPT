@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>FlaskApp</title>
-    <style>
-        .todo {
-            padding: 20px;
-            margin: 10px;
-            background-color: #eee;
-        }
-    </style>
+
 </head>
 <body>
     <h1>Demo Login in</h1>
@@ -17,11 +11,11 @@
     <div class="content">
     <form method="post">
         <p>
-            <b><label for="content">username</label></b>
+            <b><label for="content">email</label></b>
         </p>
         <p>
-            <input type="text" name="username"
-                placeholder="username"></input>
+            <input type="text" name="email"
+                placeholder="email" required></input>
         </p>
 
         <p>
@@ -29,13 +23,20 @@
         </p>
         <p>
             <input type="password" name="password"
-                placeholder="password"></input>
+                placeholder="password" required></input>
         </p>
 
-
+        <p style="color: red;">{{error}}</p>
         <button type="submit">Submit</button>
     </form>
-    <h1>{{name}}<h1>
+    <form action="./login">
+        <button type="submit">google login</button>
+     </form>
+    <hr>
+    <form action="./register">
+        <button type="submit">Sign up</button>
+     </form>
+    <a href="./forget">forget password</a>
     </div>
 </body>
 </html>

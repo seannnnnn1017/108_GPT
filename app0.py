@@ -16,11 +16,6 @@ from pip._vendor import cachecontrol
 import google.auth.transport.requests
 import pathlib
 
-#openai
-import openai
-from dotenv import dotenv_values
-import time
-
 app = Flask(__name__)
 client = MongoClient('mongodb+srv://op23756778:Sean23756778@cluster0.xqmycmu.mongodb.net/')
 
@@ -237,22 +232,21 @@ def reset_password():
         return render_template('Member_login_system/demoResetPasswordAfter.html',email=email)
     return render_template('Member_login_system/demoResetPassword.html',email=email)
 
+
+
+
+
 @app.route('/logout', methods=('GET', 'POST'))
 def logout():
     session.clear()
     return redirect(url_for('index'))
 
-
 @app.route('/assist', methods=('GET', 'POST'))
 def assist():
-    layer_list=[]
     if request.method=='POST':
-        for i in range(1,11):
-            layer_value=request.form.get(f'Layer {i}')
-            layer_list.append(layer_value)
-            print(layer_list)
-        result_data=generate_text(layer_list,department="人工智慧系",support="多元表現綜整心得")
-        return render_template('Assist_writing.html',result_data=result_data)
+        layer1_value = request.form.get('Layer 1')
+        layer2_value = request.form.get('Layer 2')
+        print(layer1_value,layer2_value)
     return  render_template('Assist_writing.html')
 
 
@@ -322,47 +316,5 @@ def send_reset_email(to_email, check_number):
         print(f"Error: {e}")
     finally:
         server.quit()
-
-def generate_text(ans_list,department="人工智慧系",support="多元表現綜整心得"):
-    with open("C:/Users/user/Desktop/108_GPT-Demo/多元表現綜整心得.txt", "r", encoding = "utf-8") as file:
-        AI_quesntions = [line.strip() for line in file.readlines()]
-        file.close()
-        
-    config = dotenv_values("C:/Users/user/Desktop/env.txt")
-    openai.api_key = config["API_KEY"]
-
-    messages = [{"role": "system", "content": "zh-Tw 你要幫準備申請大學的高中生撰寫學習歷程 字數大約1000字"}]
-
-    for i in range(len(AI_quesntions)):
-        ans=''
-        for item in ans_list:
-            ans = item #iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-        if ans:
-            messages.append({"role": "assistant", "content": AI_quesntions[i]},)
-            messages.append({"role": "user", "content": ans})
-        elif ans == "0":
-            return None
-
-    narration = f'''
-        目標學系: {department}
-        =====================================
-        根據以上問答及提供的學系，幫我完成{support}
-    '''
-    messages.append({"role": "user", "content": narration})
-
-
-    print("===========================================================================================")
-    start_time = time.time()
-    response = openai.ChatCompletion.create(
-        model = "gpt-4-1106-preview",
-        messages = messages,
-        max_tokens = 1000,
-    )
-    end_time = time.time() 
-    print(f"程式執行時間: {end_time - start_time} 秒")
-    
-    return response['choices'][0]['message']['content']
-
-
 if __name__=="__main__":
     app.run(debug=True)
