@@ -93,6 +93,37 @@ def index():
 
 
     return render_template('Member_login_system/demoLogin.html')
+    if session.get('username'):
+        return redirect(url_for('main'))
+    all_account=account.find()
+    if request.method=='POST':
+        #Obtain form data from HTML
+        Email = request.form['email']
+        password = request.form['password']
+        print(Email,password)
+        find=False
+        for i in all_account:
+            if i['email'] ==Email:
+                find=True
+                break
+        if find:
+            print('this account is exist')
+            print(i['password'])
+            print(sha512(password))
+            if sha512(password) == i['password']:
+                print('login')
+                session['username']= i['username']
+                return redirect(url_for('main'))
+            else:
+                return render_template('Member_login_system/demoLogin.html', error='password error')
+
+            
+        else:
+            return render_template('Member_login_system/demoLogin.html', error='No find this account or error.')
+
+
+
+    return render_template('Member_login_system/demoLogin.html')
 
 @app.route("/login")
 def login():
