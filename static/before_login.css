@@ -1,0 +1,189 @@
+body {
+    background-color: #fff;
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: block;
+    margin: 0px;
+
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    flex-shrink: 0;
+    height: 80px;
+}
+
+
+
+
+
+header h1 {
+    width: 212.885px;
+    height: 33.971px;
+    color: #111;
+    font-family: 'Krona One', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 2%;
+}
+
+header nav {
+    padding-right: 2%;
+    display: flex;
+}
+
+
+
+
+
+
+header nav a {
+    width: 157.08px;
+    height: 39.22px;
+    position: relative;
+}
+
+header nav a .SignUp {
+    width: 89px;
+    left: 0px;
+    top: 5px;
+    position: absolute;
+    color: #15425B;
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+header nav .Rectangle15 {
+    width: 89px;
+    height: 2px;
+    left: 0px;
+    top: 35px;
+    position: absolute;
+    background: #15425B;
+}
+
+
+header nav a .Rectangle13 {
+    width: 157.08px;
+    height: 39.22px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    border-radius: 10px;
+    border: 2px #15425B solid;
+}
+
+header nav a:hover .Rectangle13 {
+    background-color: #111;
+}
+
+header nav a .LogIn {
+    width: 106.44px;
+    height: 26.67px;
+    left: 31.83px;
+    top: 6.27px;
+    position: absolute;
+    color: #15425B;
+    font-size: 25px;
+    font-family: 'Inter';
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+header nav a:hover .LogIn {
+    color: #fff;
+    /* ¥Õ¦r */
+    background-color: #111;
+    /* ¶Â­I´º */
+}
+
+header nav a .RightArrow1 {
+    width: 33px;
+    height: 33px;
+    left: 126.87px;
+    top: 3.39px;
+    position: absolute;
+}
+
+.Introducing {
+    height: 1080px;
+    position: relative;
+    background: white
+}
+
+.Image4 {
+    height: 952px;
+
+    width: 100%;
+    top: 80px;
+    position: absolute
+}
+
+.text-info {
+    width: 60%;
+    height: 262px;
+    left: 124px;
+    top: 632px;
+    position: absolute;
+    color: #2F6690;
+    font-size: 35px;
+    font-family: 'ABeeZee';
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.Introducing108Gpt {
+    width: 508px;
+
+    right: 10%;
+    top: 216px;
+    position: absolute;
+    text-align: center;
+    color: #2F6690;
+    font-size: 100px;
+    font-family: Lalezar;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.ResetDate {
+    width: 80%;
+    height: 55px;
+    position: relative;
+    left: 12%;
+}
+
+.Rectangle10 {
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    top: 2px;
+    position: absolute;
+    background: black
+}
+
+.date {
+    left: 0px;
+    top: 19px;
+    position: absolute;
+    color: black;
+    font-size: 30px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word
+}

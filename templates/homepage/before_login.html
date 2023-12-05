@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Example</title>
+  <link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Lalezar' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+  <link rel="stylesheet" href="static\before_login.css">
+</head>
+<body>
+
+  <!-- 導航欄的 HTML 結構 -->
+  <header>
+    <h1 class="header-logo">108&GPT</h1>
+    
+    <nav>
+      <a class="SignUp" href="./register" target="_blank">
+        <div class="SignUp" >Sign up</div>
+        <div class="Rectangle15" ></div>
+      </a>
+      <a class="Login" href="./loginpage" target="_blank">
+        <div class="Rectangle13"></div>
+
+        <span class="LogIn" >Log in <i class="material-icons" style="transform: rotate(315deg);">arrow_forward</i></span>
+        
+
+      </a>
+    </nav>
+    
+
+  </header>
+
+  <div class="Introducing" >
+    <img class="Image4" src="static\background00.png" />
+    <div class="text-info">We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.</div>
+    <div class="Introducing108Gpt">Introducing<br/>  108 & GPT</div>
+  </div>
+
+  <div class="ResetDate">
+    <div class="Rectangle10" ></div>
+    <div class="date" id="currentDate">November 30, 2022</div>
+  </div>
+
+
+
+
+
+  <script>
+    function updateDate() {
+        var currentDateElement = document.getElementById('currentDate');
+        var currentDate = new Date();
+        
+        // Format the date as you want
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        var formattedDate = currentDate.toLocaleDateString('en-US', options);
+        
+        currentDateElement.textContent = formattedDate;
+    }
+
+    // Update the date initially
+    updateDate();
+
+    // Set an interval to update the date every second (you can adjust this as needed)
+    setInterval(updateDate, 1000);
+</script>
+</body>
+</html>

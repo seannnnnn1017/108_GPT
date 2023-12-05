@@ -65,13 +65,19 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    session["google_id"] =None
-    session["email"] = None
-    session["username"] = None
-    session["picture"] = None
-    session['fist_login']=False
+    return render_template('homepage/before_login.html')
+
+@app.route('/loginpage', methods=('GET', 'POST'))
+def loginpage():
+
     if session.get('username'):
         return redirect(url_for('main'))
+    else:
+        session["google_id"] =None
+        session["email"] = None
+        session["username"] = None
+        session["picture"] = None
+        session['fist_login']=False
     all_account=account.find()
     if request.method=='POST':
         #Obtain form data from HTML
@@ -186,7 +192,7 @@ def Fist_google_login():
             return redirect(url_for('main'))
         return render_template('Member_login_system/demoFistGoogleLogin.html',email=session["email"])
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('loginpage'))
 #壞掉中
 @app.route('/update_theme', methods=['POST'])
 def update_theme():
@@ -201,7 +207,7 @@ def main():
         pass
     else:
         print('not login')
-        return redirect(url_for('index'))
+        return redirect(url_for('loginpage'))
     return render_template('Member_login_system/demoMain.html', name=session.get('username'),picture=session["picture"])
 
 @app.route('/register', methods=('GET', 'POST'))
@@ -232,7 +238,7 @@ def register():
             
     else: 
         print('you are login')
-        return redirect(url_for('index'))
+        return redirect(url_for('loginpage'))
     return render_template('Member_login_system/demoRegister.html')
 
 @app.route('/Check', methods=('GET', 'POST'))
@@ -300,7 +306,7 @@ def reset_password():
 @app.route('/logout', methods=('GET', 'POST'))
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('loginpage'))
 
 
 @app.route('/assist', methods=('GET', 'POST'))
@@ -384,7 +390,7 @@ def send_reset_email(to_email, check_number):
         server.quit()
 
 def generate_text(ans_list,department="人工智慧系",support="多元表現綜整心得"):
-    with open("C:/Users/user/Desktop/108_GPT-Demo/多元表現綜整心得.txt", "r", encoding = "utf-8") as file:
+    with open(".\data\多元表現綜整心得.txt", "r", encoding = "utf-8") as file:
         AI_quesntions = [line.strip() for line in file.readlines()]
         file.close()
         
