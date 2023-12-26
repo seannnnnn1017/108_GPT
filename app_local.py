@@ -208,7 +208,7 @@ def main():
     else:
         print('not login')
         return redirect(url_for('loginpage'))
-    return render_template('Member_login_system/demoMain.html', name=session.get('username'),picture=session["picture"])
+    return render_template('homepage/after_login.html', name=session.get('username'),picture=session["picture"])
 
 @app.route('/register', methods=('GET', 'POST'))
 def register():
@@ -300,7 +300,7 @@ def reset_password():
             return render_template('Member_login_system/demoResetPassword.html',state='password need to have 8 or more characters',email=email)
         reset_ask.delete_many(query)
         account.update_one(query, {'$set': {'password': sha512(password)}})
-        return render_template('Member_login_system/demoResetPasswordAfter.html',email=email)
+        return render_template('Member_login_system/demoLogin.html',email=email)
     return render_template('Member_login_system/demoResetPassword.html',email=email)
 
 @app.route('/logout', methods=('GET', 'POST'))

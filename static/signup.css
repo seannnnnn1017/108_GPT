@@ -1,0 +1,215 @@
+.Line {
+    width: 544px;
+    height: 1px;
+    background: #15425B;
+    top: 25%;
+    left: calc(50% - 278px);
+    position: absolute;
+}
+
+.straight_line {
+    width: 2px;
+    height: 30px;
+    flex-shrink: 0;
+    background: #81B8C9;
+    position: relative;
+}
+
+.line_text {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    width: 556px;
+    height: 543px;
+    position: absolute;
+    top: 25%;
+    left: calc(50% - 278px);
+    padding-top: 20px;
+}
+
+.inputbox {
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #2F6690;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 15px;
+}
+
+.inputbox input {
+    flex-shrink: 0;
+    border-radius: 10px;
+    z-index: 1;
+    width: 90%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 1em;
+    padding-left: 20px;
+}
+
+.inputbox label {
+    color: #2F6690;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    background-color: #FFF;
+    height: 20px;
+    top: 12px;
+    left: 20px;
+    z-index: 2;
+    margin-top: 0;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.inputbox input:focus~label,
+.inputbox input:valid~label {
+    transform: translateY(-125%);
+}
+
+.inputbox input:focus~span,
+.inputbox input:valid~span {
+    display: none;
+}
+
+.Limt {
+    color: rgba(0, 0, 0, 0.40);
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    width: 175px;
+    left: 242px;
+    top: 10px;
+    pointer-events: none;
+}
+
+.submit {
+    border-radius: 10px;
+    background-color: #2F6690;
+    flex-shrink: 0;
+    fill: #2F6690;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 50px;
+}
+
+
+
+.submit_text {
+    color: #FFF;
+    text-align: center;
+    font-family: Goldman;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.submit_text:hover {
+    color: #81B8C9;
+}
+
+.login_link {
+    color: #15425B;
+    font-family: Inter;
+    font-size: 18px;
+    /* font-style: normal; */
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+}
+
+.login_link:hover{
+    font-weight: 900;
+}
+
+.already_have_ac {
+    color: #15425B;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+}
+
+.already_have_ac_login {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.CourseraRecaptchaEnterpriseGoogle {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+}
+
+.title {
+    top: 15%;
+    left: calc(50% - 273px);
+    position: absolute;
+    text-align: center;
+}
+
+.GPT {
+    width: 346px;
+    color: #15425B;
+    text-align: center;
+    font-family: Krona One;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 90px;
+    position: relative;
+}
+
+.title_Line {
+    width: 544px;
+    height: 0px;
+    border: 1px #15425B solid;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.right_img {
+    bottom: 0px;
+    position: absolute;
+    right: 0;
+}
+
+
+
+body {
+    height: 100%;
+    margin: 0px;
+}
+
+.title .intro {
+    width: 539px;
+    color: #15425B;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

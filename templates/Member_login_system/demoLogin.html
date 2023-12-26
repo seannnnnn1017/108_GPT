@@ -3,40 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>FlaskApp</title>
+    <link href="https://fonts.googleapis.com/css?family=Krona One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Goldman" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lalezar" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+    <link rel="stylesheet" href="static\login.css">
+    <link rel="stylesheet" href="static\signup.css">
 
 </head>
 <body>
-    <h1>Demo Login in</h1>
-    <hr>
+    <div class="top_img">
+        <img src="static\login_top.png" style="top: 0px; left: 0px;
+        position: absolute;
+    ">
+    </div>
+    <div class="bottom_img">
+        <img src="static\login_botton.png" style="bottom: 0px; left: 0px;
+        position: absolute;
+    ">
+    </div>
+    <div class="title">
+        <div class="login_text">XXX</div>
+        <div class="title_Line"></div>
+    </div>
     <div class="content">
-    <form method="post">
-        <p>
-            <b><label for="content">email</label></b>
-        </p>
-        <p>
-            <input type="text" name="email"
-                placeholder="email" required></input>
-        </p>
+        <form method="post" class="form">
+            <div class='inputbox'>
+                <input type="text" name="email"placeholder="" required>
+                <label for="content" class='inputbox_text'>email</label>
+            </div>
 
-        <p>
-            <b><label for="content">password</label></b>
-        </p>
-        <p>
-            <input type="password" name="password"
-                placeholder="password" required></input>
-        </p>
+            <div class='inputbox'>
+                <input type="password" name="password"placeholder="" required>
+                <label for="content" class='inputbox_text'>password</label>
+            </div>
 
-        <p style="color: red;">{{error}}</p>
-        <button type="submit">Submit</button>
-    </form>
-    <form action="./login">
-        <button type="submit">google login</button>
-     </form>
-    <hr>
-    <form action="./register">
-        <button type="submit">Sign up</button>
-     </form>
-    <a href="./forget">forget password</a>
+            <div>
+                <p style="color: red;">{{state}}</p>
+                <p style="color: green;">{{success}}
+                    <button type="submit" class='login submit_text'>LOGIN</button>
+            </div>
+
+            <div class='already_have_ac_login'>
+                <a href='./forget' class='login_link'>忘記密碼</a>
+                <a href='./register' class='login_link'>註冊帳號</a>
+            </div>
+
+        </form>
+        <div class='googlebox'>
+            <form action="./login" class='googlebox'>
+                <button type="submit" class='google'>
+                    <span class='google_text'>其他登入方式</span>
+                    <div class="google_image">
+                        <img src="static\gmail.png" style="bottom: 0px;
+                        position: absolute; right:0px">
+                    </div>
+                </button>
+            </form>
+        </div>  
+    </div>
+    <div class="CourseraRecaptchaEnterpriseGoogle"><span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; word-wrap: break-word">我接受Coursera 的 </span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; text-decoration: underline; word-wrap: break-word">使用條款</span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; word-wrap: break-word"> 和 </span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; text-decoration: underline; word-wrap: break-word">隱私聲明</span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; word-wrap: break-word">。登錄時遇到問題？
+        </span><span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; text-decoration: underline; word-wrap: break-word">學生幫助中心<br /></span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; word-wrap: break-word">本網站受reCAPTCHA Enterprise 的保護，並需要遵守 Google </span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; text-decoration: underline; word-wrap: break-word">隱私政策</span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; word-wrap: break-word"> 和</span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; text-decoration: underline; word-wrap: break-word">服務條款</span>
+        <span style="color: #15425B; font-size: 16px; font-family: Krona One; font-weight: 400; word-wrap: break-word">。</span>
     </div>
 </body>
 </html>

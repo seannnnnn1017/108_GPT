@@ -33,11 +33,12 @@ header h1 {
     height: 33.971px;
     color: #111;
     font-family: 'Krona One', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     padding-left: 2%;
+    text-align: center;
 }
 
 header nav {
@@ -107,9 +108,7 @@ header nav a .LogIn {
 
 header nav a:hover .LogIn {
     color: #fff;
-    /* ¥Õ¦r */
     background-color: #111;
-    /* ¶Â­I´º */
 }
 
 header nav a .RightArrow1 {
@@ -141,7 +140,7 @@ header nav a .RightArrow1 {
     top: 632px;
     position: absolute;
     color: #2F6690;
-    font-size: 35px;
+    font-size: 24px;
     font-family: 'ABeeZee';
     font-weight: 400;
     word-wrap: break-word

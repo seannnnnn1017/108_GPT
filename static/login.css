@@ -1,0 +1,197 @@
+.title {
+    top: 15%;
+    left: calc(50% - 273px);
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+}
+
+.GPT {
+    width: 346px;
+    color: #15425B;
+    text-align: center;
+    font-family: Krona One;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 90px;
+    position: relative;
+}
+
+.title_Line {
+    width: 544px;
+    height: 0px;
+    border: 1px #15425B solid;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.form {
+    width: 556px;
+    height: 300px;
+    position: absolute;
+    top: 25%;
+    left: calc(50% - 278px);
+}
+
+.googlebox {
+    width: 556px;
+    height: 200px;
+    position: absolute;
+    bottom: 15%;
+    left: calc(50% - 278px);
+}
+
+.inputbox {
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #2F6690;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 15px;
+}
+
+.inputbox input {
+    flex-shrink: 0;
+    border-radius: 10px;
+    z-index: 1;
+    width: 90%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 1em;
+    padding-left: 20px;
+}
+
+.inputbox label {
+    color: #2F6690;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    background-color: #FFF;
+    height: 20px;
+    top: 12px;
+    left: 20px;
+    z-index: 2;
+    margin-top: 0;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.inputbox input:focus~label,
+.inputbox input:valid~label {
+    transform: translateY(-125%);
+}
+
+.inputbox input:focus~span,
+.inputbox input:valid~span {
+    display: none;
+}
+
+.login {
+    border-radius: 10px;
+    background-color: #2F6690;
+    flex-shrink: 0;
+    fill: #2F6690;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 0;
+}
+
+.login_text {
+    color: #000000;
+    text-align: center;
+    font-family: Goldman;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.submit_text {
+    color: #FFF;
+    text-align: center;
+    font-family: Goldman;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.login_link {
+    color: #15425B;
+    font-family: Inter;
+    font-size: 18px;
+    /* font-style: normal; */
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+}
+
+.already_have_ac {
+    color: #15425B;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+}
+
+.already_have_ac_login {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.google {
+    border-radius: 10px;
+    background-color: #FFF;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    fill: #FFF;
+    position: relative;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 50px;
+    display: inline-flex;
+}
+
+
+
+.google_text {
+    color: #15425B;
+    text-align: center;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    display: inline-flex;
+}
+
+.google_image{
+    width: 55px;
+    height: 45px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.google_text_image {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
